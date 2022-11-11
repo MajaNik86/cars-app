@@ -3,6 +3,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import AppCars from "./pages/AppCars";
+import AddCar from "./pages/AddCar";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
           <Route path='/cars' exact>
             <AppCars />
           </Route>
-
+          <Route path='/add' exact>
+            <AddCar />
+          </Route>
         </Switch>
       </Layout>
 
