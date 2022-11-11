@@ -4,7 +4,7 @@ import classes from "./AddCar.module.css";
 
 
 
-export default function AddCarForm({ newCar, setNewCar, onChange, onReset }) {
+export default function AddCarForm({ newCar, setNewCar, onChange, onReset, onPreview }) {
 
     const years = (start = 1990, end = 2018) => {
         return Array.apply(0, Array(end - start + 1)).map(
@@ -83,6 +83,9 @@ export default function AddCarForm({ newCar, setNewCar, onChange, onReset }) {
                     <button type='button' onClick={onReset}>
                         Reset
                     </button></div>
+                <div><button type='button' onClick={onPreview}>
+                    Preview
+                </button> </div>
             </form>
         </div>
     );

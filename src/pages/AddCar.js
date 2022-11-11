@@ -47,6 +47,18 @@ export default function AddCar() {
         })
 
     }
+    // preview:
+    const handlePreview = () => {
+        alert(`
+        Brand: ${newCar.brand} 
+        Model: ${newCar.model} 
+        Year: ${newCar.year} 
+        Max speed: ${newCar.maxSpeed} 
+        Number of doors: ${newCar.numberOfDoors} 
+        Is Automatic: ${newCar.isAutomatic ? 'Yes' : 'No'} 
+        Engine: ${newCar.engine} 
+      `);
+    }
 
     return (<div><h3>
         Add a new car:
@@ -55,6 +67,7 @@ export default function AddCar() {
             newCar={newCar}
             setNewCar={setNewCar}
             onChange={handleSubmit}
-            onReset={handleReset} />
+            onReset={handleReset}
+            onPreview={handlePreview} />
     </div>)
 }
