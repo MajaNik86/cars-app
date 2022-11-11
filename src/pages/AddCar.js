@@ -34,7 +34,19 @@ export default function AddCar() {
         // redirektovanje na cars stranicu
         history.push('/cars');
     }
+    // reset button:
+    const handleReset = () => {
+        setNewCar({
+            brand: '',
+            model: '',
+            year: YEARS[0],
+            maxSpeed: '',
+            numberOfDoors: '',
+            isAutomatic: false,
+            engine: '',
+        })
 
+    }
 
     return (<div><h3>
         Add a new car:
@@ -42,6 +54,7 @@ export default function AddCar() {
         <AddCarForm
             newCar={newCar}
             setNewCar={setNewCar}
-            onChange={handleSubmit} />
+            onChange={handleSubmit}
+            onReset={handleReset} />
     </div>)
 }
