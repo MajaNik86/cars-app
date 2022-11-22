@@ -63,10 +63,10 @@ export default function AddCarForm({
                     </select>
                 </div>
                 <div className={classes.control}>
-                    <label htmlFor="maxspeed">MaxSpeed:</label>
+                    <label htmlFor="maxSpeed">MaxSpeed:</label>
                     <input
                         type="number"
-                        id="maxspeed"
+                        id="maxSpeed"
                         value={newCar.maxSpeed}
                         onChange={({ target }) =>
                             setNewCar({ ...newCar, maxSpeed: target.value })
@@ -79,9 +79,9 @@ export default function AddCarForm({
                         required
                         type="number"
                         id="doors"
-                        value={newCar.numberOfDoors}
+                        value={newCar.number_of_doors}
                         onChange={({ target }) =>
-                            setNewCar({ ...newCar, numberOfDoors: target.value })
+                            setNewCar({ ...newCar, number_of_doors: target.value })
                         }
                     />
                 </div>

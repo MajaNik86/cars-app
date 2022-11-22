@@ -8,6 +8,7 @@ export default function AddCar() {
     const YEARS = Array(2018 - 1990 + 1)
         .fill(1990)
         .map((el, index) => el + index);
+
     const history = useHistory();
     const { id } = useParams();
 
@@ -16,7 +17,7 @@ export default function AddCar() {
         model: '',
         year: YEARS[0],
         maxSpeed: '',
-        numberOfDoors: '',
+        number_of_doors: '',
         isAutomatic: false,
         engine: '',
     });
@@ -24,7 +25,7 @@ export default function AddCar() {
     // submitovanje forme:
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('usla sam ovde')
+        console.log({ newCar })
         if (id) {
             CarsService.edit(id, newCar)
         } else {
@@ -41,7 +42,7 @@ export default function AddCar() {
             model: '',
             year: YEARS[0],
             maxSpeed: '',
-            numberOfDoors: '',
+            number_of_doors: '',
             isAutomatic: false,
             engine: '',
         })
@@ -50,13 +51,13 @@ export default function AddCar() {
     // preview:
     const handlePreview = () => {
         alert(`
-        Brand: ${newCar.brand} 
-        Model: ${newCar.model} 
-        Year: ${newCar.year} 
-        Max speed: ${newCar.maxSpeed} 
-        Number of doors: ${newCar.numberOfDoors} 
-        Is Automatic: ${newCar.isAutomatic ? 'Yes' : 'No'} 
-        Engine: ${newCar.engine} 
+        brand: ${newCar.brand} 
+        model: ${newCar.model} 
+        year: ${newCar.year} 
+        maxSpeed: ${newCar.maxSpeed} 
+        isAutomatic: ${newCar.isAutomatic ? 'Yes' : 'No'} 
+        number_of_doors: ${newCar.number_of_doors} 
+        engine: ${newCar.engine} 
       `);
     }
 

@@ -19,6 +19,9 @@ function App() {
           <Route path='/add' exact>
             <AddCar />
           </Route>
+          <Route exact path='/edit/:id'>
+            <AddCar />
+          </Route>
         </Switch>
       </Layout>
 
