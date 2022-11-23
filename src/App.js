@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import AppCars from "./pages/AppCars";
 import AddCar from "./pages/AddCar";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path='/edit/:id'>
             <AddCar />
+          </Route>
+          <Route path='/login' exact>
+            <Login />
           </Route>
         </Switch>
       </Layout>

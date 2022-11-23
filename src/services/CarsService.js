@@ -1,16 +1,16 @@
-import { axiosInstance } from "./AxiosService";
+import { httpService } from "./HttpService";
 
 
 class CarsService {
 
     async getAll() {
-        const response = await axiosInstance.get("/cars");
+        const response = await httpService.axiosInstance.get("/cars");
         return response.data
     }
 
     async add(newCar) {
         try {
-            const { data } = await axiosInstance.post('cars', newCar);
+            const { data } = await httpService.axiosInstance.post('cars', newCar);
             return data;
         } catch (error) {
             console.log(error);
@@ -19,7 +19,7 @@ class CarsService {
     }
     async get(id) {
         try {
-            const { data } = await axiosInstance.get(`cars/${id}`);
+            const { data } = await httpService.axiosInstance.get(`cars/${id}`);
             return data;
         } catch (error) {
             console.log(error);
@@ -29,7 +29,7 @@ class CarsService {
     }
     async edit(id, newCar) {
         try {
-            const { data } = await axiosInstance.put(`cars/${id}`, newCar);
+            const { data } = await httpService.axiosInstance.put(`cars/${id}`, newCar);
             return data;
         } catch (error) {
             console.log(error);
@@ -39,7 +39,7 @@ class CarsService {
 
     async delete(carId) {
         try {
-            const { data } = await axiosInstance.delete(`cars/${carId}`);
+            const { data } = await httpService.axiosInstance.delete(`cars/${carId}`);
 
             return data;
         } catch (error) {

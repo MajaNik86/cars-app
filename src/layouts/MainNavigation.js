@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const MainNavigation = () => {
 
+
     return <header className={classes.header}>
         <nav className={classes.nav}>
             <ul>
@@ -12,6 +13,10 @@ const MainNavigation = () => {
                 <li>
                     <NavLink to='/add' activeClassName={classes.active}>Add New Car</NavLink>
                 </li>
+                <li>
+                    <NavLink to='/login' activeClassName={classes.active}>Login</NavLink>
+                </li>
+
             </ul>
         </nav>
     </header>
