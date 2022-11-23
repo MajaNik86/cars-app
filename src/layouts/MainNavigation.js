@@ -1,7 +1,18 @@
 import classes from './MainNavigation.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import { authService } from "../services/AuthService";
 
 const MainNavigation = () => {
+    const history = useHistory();
+    const token = localStorage.getItem("token");
+
+    const handleLogout = async () => {
+        await authService.logout();
+        alert("You have logged out.");
+        history.push("/cars");
+
+    };
 
 
     return <header className={classes.header}>
@@ -14,12 +25,16 @@ const MainNavigation = () => {
                     <NavLink to='/add' activeClassName={classes.active}>Add New Car</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/login' activeClassName={classes.active}>Login</NavLink>
-                </li>
+                    {token ? (
+                        <button onClick={handleLogout}>Logout</button>
+                    ) : (
+                        <NavLink to='/login' activeClassName={classes.active}>Login</NavLink>
 
+                    )}
+                </li>
             </ul>
         </nav>
-    </header>
+    </header >
 }
 
 export default MainNavigation;
