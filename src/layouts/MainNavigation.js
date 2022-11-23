@@ -27,9 +27,14 @@ const MainNavigation = () => {
                 <li>
                     {token ? (
                         <button onClick={handleLogout}>Logout</button>
-                    ) : (
-                        <NavLink to='/login' activeClassName={classes.active}>Login</NavLink>
+                    ) : (<>
 
+                        <NavLink to='/login' activeClassName={classes.active}>Login    </NavLink>
+
+
+                        <NavLink to='/register' activeClassName={classes.active}>    Register </NavLink>
+
+                    </>
                     )}
                 </li>
             </ul>

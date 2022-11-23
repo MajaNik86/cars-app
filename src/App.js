@@ -5,6 +5,7 @@ import Layout from "./layouts/Layout";
 import AppCars from "./pages/AppCars";
 import AddCar from "./pages/AddCar";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path='/login' exact>
             <Login />
+          </Route>
+          <Route path='/register' exact>
+            <Register />
           </Route>
         </Switch>
       </Layout>
