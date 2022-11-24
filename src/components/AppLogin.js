@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./AddCar.module.css";
 
-export default function AppLogin({ handleOnLogin, user, setUser }) {
+export default function AppLogin({ handleOnLogin, newUser, setNewUser }) {
 
     return (
         <div>
@@ -10,16 +10,16 @@ export default function AppLogin({ handleOnLogin, user, setUser }) {
                 <input className={classes.control}
                     required
                     type="email"
-                    value={user.email}
-                    onChange={({ target }) => setUser({ ...user, email: target.value })}
+                    value={newUser.email}
+                    onChange={({ target }) => setNewUser({ ...newUser, email: target.value })}
                 />
                 <label htmlFor="password">Password:</label>
                 <input className={classes.control}
                     required
                     type="password"
-                    value={user.password}
+                    value={newUser.password}
                     onChange={({ target }) =>
-                        setUser({ ...user, password: target.value })
+                        setNewUser({ ...newUser, password: target.value })
                     }
                 />
                 <button type="submit">login</button>
