@@ -10,21 +10,16 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState({});
 
     const handleLogin = async (data) => {
-        try {
-            const response = await authService.login(data);
-            setUser(response.data.user);
-            history.push("/cars");
-        } catch (error) { }
+        const response = await authService.login(data);
+        setUser(response.data.user);
+        history.push("/users");
     };
 
     const handleRefreshToken = async () => {
         const token = handleGetItemFromLS("token");
-
         if (token) {
-            try {
-                const response = await authService.refresh();
-                setUser(response.data.user);
-            } catch (error) { }
+            const { user } = await authService.refresh();
+            setUser(user);
         }
     };
 

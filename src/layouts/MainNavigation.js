@@ -5,7 +5,7 @@ import { authService } from "../services/AuthService";
 import useAuth from '../hooks/useAuth';
 
 
-const MainNavigation = () => {
+const MainNavigation = (props) => {
     const { user, logout } = useAuth();
     const history = useHistory();
     const token = localStorage.getItem("token");
@@ -20,31 +20,28 @@ const MainNavigation = () => {
 
         <nav className={classes.nav}>
             <ul>
-                {/* {!user.name && (
+                {!user.name && (
                     <li>
-                        <NavLink to='/login' activeClassName={classes.active}>Login    </NavLink>
+                        <Link to="/login">Login</Link>
                     </li>
                 )}
                 {!user.name && (
                     <li>
-                        <NavLink to='/register' activeClassName={classes.active}>Register    </NavLink>
+                        <Link to="/register">Register</Link>
                     </li>
                 )}
-                {user.name && (
-                    <li>
-                        <button onClick={handleLogout}>Logout</button>
-                    </li>
-                )} */}
                 <li>
-                    <NavLink to='/cars' activeClassName={classes.active}>Cars</NavLink>
+                    <Link to="/cars">Cars</Link>
                 </li>
                 <li>
-                    <NavLink to='/add' activeClassName={classes.active}>Add New Car</NavLink>
+                    <Link to="/add">Add</Link>
                 </li>
                 <li>
-                    <NavLink to='/cars/:id' activeClassName={classes.active}>Single Car</NavLink>
+                    <button onClick={handleLogout}>Logout</button>
                 </li>
-                <li>
+            </ul>
+
+            {/* <li>
                     {token ? (
                         <button onClick={handleLogout}>Logout</button>
                     ) : (<>
@@ -56,8 +53,8 @@ const MainNavigation = () => {
 
                     </>
                     )}
-                </li>
-            </ul>
+                </li> */}
+
         </nav>
     </header >
 }

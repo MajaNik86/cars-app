@@ -5,12 +5,12 @@ import { authService } from "../services/AuthService";
 
 export default function Register() {
     const [newUser, setNewUser] = useState({ name: '', email: '', password: '' });
-    const history = useHistory;
+    const history = useHistory();
 
-    const handleOnRegister = async (e) => {
+    const handleOnRegisterU = async (e) => {
         e.preventDefault();
         const response = await authService.register(newUser);
-        if (response.status === 200) {
+        if (response) {
             alert('Registration successful.');
             history.push("/login");
         }
@@ -19,7 +19,7 @@ export default function Register() {
 
     return (
         <AppRegister
-            handleOnRegister={handleOnRegister}
+            handleOnRegister={handleOnRegisterU}
             newUser={newUser}
             setNewUser={setNewUser}
         />

@@ -18,7 +18,6 @@ const GuestRoute = ({ children, ...rest }) => {
 function Router() {
     return (
         <div className="App">
-
             <Switch>
                 <AuthRoute path='/' exact>
                     <Redirect to='/cars'></Redirect>
@@ -26,12 +25,12 @@ function Router() {
                 <Route path='/cars' exact>
                     <AppCars />
                 </Route>
-                <AuthRoute path='/add' exact>
+                <AuthRoute path='/add'>
                     <AddCar />
                 </AuthRoute>
-                <AuthRoute exact path='/edit/:id'>
+                {/* <AuthRoute exact path='/edit/:id'>
                     <AddCar />
-                </AuthRoute>
+                </AuthRoute> */}
                 <GuestRoute path='/login' exact>
                     <Login />
                 </GuestRoute>
@@ -39,8 +38,6 @@ function Router() {
                     <Register />
                 </GuestRoute>
             </Switch>
-
-
         </div>
     );
 }
