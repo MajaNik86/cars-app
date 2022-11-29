@@ -39,21 +39,27 @@ export default function Cars() {
                 </li>
             </Link>))}
         </ul> */}
-        <ul>
-            {cars &&
-                cars.map((car) => (<li key={car.id}>
-                    <SingleCarComponent
-                        key={car.id}
-                        brand={car.brand}
-                        model={car.model}
-                        year={car.year}
-                        maxSpeed={car.maxSpeed}
-                        isAutomatic={car.isAutomatic}
-                        engine={car.engine}
-                        number_of_doors={car.number_of_doors}
-                    /></li>
-                ))
-            }
-        </ul >
+
+        {(cars && cars.length != 0) ?
+            <ul>
+                {cars &&
+                    cars.map((car) => (
+                        <li
+                            key={car.id}>
+                            <SingleCarComponent
+                                key={car.id}
+                                brand={car.brand}
+                                model={car.model}
+                                year={car.year}
+                                maxSpeed={car.maxSpeed}
+                                isAutomatic={car.isAutomatic}
+                                engine={car.engine}
+                                number_of_doors={car.number_of_doors}
+                            />
+                        </li>
+                    ))
+                } </ul >
+            : "no such car"}
+
     </div >
 }
