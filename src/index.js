@@ -6,19 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import { AuthProvider } from './hooks/useAuth';
-// import store from './store';
-// import { Provider } from 'react-redux';
+import store from './store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    {/* <Provider store={store}> */}
-    <AuthProvider>
-      <Layout>
-        <App />
-      </Layout>
-    </AuthProvider>
-    {/* </Provider> */}
+    <Provider store={store}>
+      <AuthProvider>
+        <Layout>
+          <App />
+        </Layout>
+      </AuthProvider>
+    </Provider>
   </BrowserRouter>
 );
 

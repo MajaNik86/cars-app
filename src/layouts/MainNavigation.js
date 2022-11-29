@@ -1,8 +1,9 @@
 import classes from './MainNavigation.module.css';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import { authService } from "../services/AuthService";
 import useAuth from '../hooks/useAuth';
+import CarSearchComponent from '../components/CarSearchComponent';
 
 
 const MainNavigation = (props) => {
@@ -12,7 +13,7 @@ const MainNavigation = (props) => {
 
     const handleLogout = async () => {
         await authService.logout();
-        history.push("/cars");
+        history.push("/login");
     };
 
 
@@ -30,15 +31,21 @@ const MainNavigation = (props) => {
                         <Link to="/register">Register</Link>
                     </li>
                 )}
-                <li>
-                    <Link to="/cars">Cars</Link>
-                </li>
-                <li>
-                    <Link to="/add">Add</Link>
-                </li>
-                <li>
+                {user.name &&
+                    <li>
+                        <Link to="/cars">Cars</Link>
+                    </li>}
+                {user.name &&
+                    <li>
+                        <Link to="/add">Add</Link>
+                    </li>}
+
+                {user.name && <li>
                     <button onClick={handleLogout}>Logout</button>
-                </li>
+                </li>}
+                {user.name &&
+                    <li><CarSearchComponent /></li>}
+
             </ul>
 
             {/* <li>

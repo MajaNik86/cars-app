@@ -5,7 +5,7 @@ import AddCar from "./pages/AddCar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import useAuth from "./hooks/useAuth";
-
+import SingleCarPage from './pages/SingleCarPage'
 const AuthRoute = ({ children, ...rest }) => {
     const { user } = useAuth();
     return <Route {...rest}> {user.name ? children : <Redirect to='/login' />}</Route>
@@ -20,11 +20,14 @@ function Router() {
         <div className="App">
             <Switch>
                 <AuthRoute path='/' exact>
-                    <Redirect to='/cars'></Redirect>
+                    <Redirect to='/login'></Redirect>
                 </AuthRoute>
-                <Route path='/cars' exact>
+                <AuthRoute path='/cars' exact>
                     <AppCars />
-                </Route>
+                </AuthRoute>
+                <AuthRoute path='/cars/:id'>
+                    <SingleCarPage />
+                </AuthRoute>
                 <AuthRoute path='/add'>
                     <AddCar />
                 </AuthRoute>
