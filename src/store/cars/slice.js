@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
 export const carSlice = createSlice({
     name: 'cars',
@@ -9,6 +10,12 @@ export const carSlice = createSlice({
             select: [],
             counter: 0,
         },
+        sort: [],
+        page: {
+            current_page: 1,
+            cars_per_page: 3
+        },
+        currentCar: null
     },
     reducers: {
 
@@ -36,7 +43,28 @@ export const carSlice = createSlice({
             state.selectCars.select = []
         },
 
+        setSortByBrandAsc(state) {
+            state.sort = state.carsFilter.sort((a, b) =>
+                (a.brand > b.brand) ? 1 : -1)
+        },
 
+        setSortByBranDesc(state) {
+            state.sort = state.carsFilter.sort((a, b) =>
+                (a.brand > b.brand) ? -1 : 1)
+        },
+
+        setSortByMaxSpeedAsc(state) {
+            state.sort = state.carsFilter.sort((a, b) =>
+                (a.maxSpeed - b.maxSpeed))
+        },
+
+        setSortByMaxSpeedDesc(state) {
+            state.sort = state.carsFilter.sort((a, b) =>
+                (b.maxSpeed - a.maxSpeed))
+        },
+        setPaginated(state, action) {
+            state.page.current_page = action.payload
+        },
     },
 });
 
@@ -46,7 +74,12 @@ export const {
     setSearch,
     setSelect,
     setSelectAll,
-    setDeselectAll
+    setDeselectAll,
+    setSortByBrandAsc,
+    setSortByBranDesc,
+    setSortByMaxSpeedAsc,
+    setSortByMaxSpeedDesc,
+    setPaginated
 
 } = carSlice.actions;
 
