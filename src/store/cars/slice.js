@@ -5,6 +5,10 @@ export const carSlice = createSlice({
     initialState: {
         all: [],
         carsFilter: [],
+        selectCars: {
+            select: [],
+            counter: 0,
+        },
     },
     reducers: {
 
@@ -16,7 +20,22 @@ export const carSlice = createSlice({
             state.carsFilter = state.all.filter((car) =>
                 car.brand.toLowerCase().includes(action.payload.toLowerCase()) ||
                 car.model.toLowerCase().includes(action.payload.toLowerCase()))
-        }
+        },
+        setSelect: (state, action) => {
+            if (!state.selectCars.select.includes(action.payload)) {
+                state.selectCars.select.push(action.payload)
+            }
+            state.selectCars.counter = state.selectCars.select.length;
+        },
+
+        setSelectAll(state) {
+            state.selectCars.select = state.carsFilter.map((car) => car.id)
+        },
+
+        setDeselectAll(state) {
+            state.selectCars.select = []
+        },
+
 
     },
 });
@@ -25,6 +44,10 @@ export const carSlice = createSlice({
 export const {
     setAll,
     setSearch,
+    setSelect,
+    setSelectAll,
+    setDeselectAll
+
 } = carSlice.actions;
 
 export default carSlice.reducer; 

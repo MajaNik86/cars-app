@@ -2,5 +2,6 @@
 
 const allCars = (state) => state.cars.all;
 const carsFilter = (state) => state.cars.carsFilter;
+const selectSelect = (state) => state.cars.selectCars
 
-export { allCars, carsFilter }
+export { allCars, carsFilter, selectSelect }

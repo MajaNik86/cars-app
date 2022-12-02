@@ -6,6 +6,9 @@ import { allCars } from "../store/cars/selector";
 import { Link } from "react-router-dom";
 import SingleCarComponent from '../components/SingleCarComponent';
 import { carsFilter } from "../store/cars/selector";
+import { setSelectAll } from "../store/cars/slice";
+import { setDeselectAll } from "../store/cars/slice";
+
 
 
 
@@ -39,24 +42,26 @@ export default function Cars() {
                 </li>
             </Link>))}
         </ul> */}
-
+        <button onClick={() => dispatch(setSelectAll())}>Select All</button>
+        <button onClick={() => dispatch(setDeselectAll())}>Deselect All</button>
         {(cars && cars.length != 0) ?
             <ul>
                 {cars &&
                     cars.map((car) => (
-                        <li
-                            key={car.id}>
-                            <SingleCarComponent
-                                key={car.id}
-                                brand={car.brand}
-                                model={car.model}
-                                year={car.year}
-                                maxSpeed={car.maxSpeed}
-                                isAutomatic={car.isAutomatic}
-                                engine={car.engine}
-                                number_of_doors={car.number_of_doors}
-                            />
-                        </li>
+                        // <li
+                        //     key={car.id}>
+                        <SingleCarComponent
+                            key={car.id}
+                            brand={car.brand}
+                            model={car.model}
+                            year={car.year}
+                            maxSpeed={car.maxSpeed}
+                            isAutomatic={car.isAutomatic}
+                            engine={car.engine}
+                            number_of_doors={car.number_of_doors}
+                        />
+
+                        // </li>
                     ))
                 } </ul >
             : "no such car"}
